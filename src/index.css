@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  :root {
+    --background: 220 20% 4%;
+    --foreground: 226 100% 93%;
+
+    --card: 220 15% 8%;
+    --card-foreground: 226 100% 93%;
+
+    --popover: 220 15% 8%;
+    --popover-foreground: 226 100% 93%;
+
+    --primary: 243 97% 88%;
+    --primary-foreground: 220 20% 4%;
+
+    --secondary: 240 6% 17%;
+    --secondary-foreground: 226 100% 93%;
+
+    --muted: 234 15% 23%;
+    --muted-foreground: 226 50% 75%;
+
+    --accent: 243 80% 70%;
+    --accent-foreground: 220 20% 4%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 130 70% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --border: 220 10% 20%;
+    --input: 220 10% 20%;
+    --ring: 243 97% 88%;
+
+    --radius: 0.75rem;
+
+    /* Custom Colors */
+    --primary-100: 243 100% 93%;
+    --primary-200: 247 99% 88%;
+    --light-100: 226 100% 93%;
+    --light-400: 232 25% 54%;
+    --light-600: 233 22% 40%;
+    --light-800: 230 22% 18%;
+    --dark-100: 218 67% 2%;
+    --dark-200: 228 10% 17%;
+    --dark-300: 234 17% 17%;
+    --success-100: 130 70% 58%;
+    --success-200: 134 52% 52%;
+    --destructive-100: 0 90% 65%;
+    --destructive-200: 0 55% 51%;
+
+    --sidebar-background: 220 15% 6%;
+    --sidebar-foreground: 226 100% 93%;
+    --sidebar-primary: 243 97% 88%;
+    --sidebar-primary-foreground: 220 20% 4%;
+    --sidebar-accent: 234 15% 23%;
+    --sidebar-accent-foreground: 226 100% 93%;
+    --sidebar-border: 220 10% 20%;
+    --sidebar-ring: 243 97% 88%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-outfit antialiased;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234B4D4F' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl font-bold text-foreground;
+  }
+
+  h2 {
+    @apply text-3xl font-semibold text-foreground;
+  }
+
+  h3 {
+    @apply text-2xl font-semibold text-foreground;
+  }
+
+  p {
+    @apply text-light-100;
+  }
+}
+
+@layer components {
+  /* Gradient Utilities */
+  .dark-gradient {
+    @apply bg-gradient-to-b from-[hsl(220,15%,12%)] to-[hsl(220,20%,4%)];
+  }
+
+  .border-gradient {
+    background: linear-gradient(180deg, hsl(220 10% 35%) 0%, hsl(220 10% 20% / 0.2) 100%);
+  }
+
+  .blue-gradient-dark {
+    @apply bg-gradient-to-b from-[hsl(246,40%,15%)] to-[hsl(220,20%,4%)];
+  }
+
+  .blue-gradient {
+    @apply bg-gradient-to-l from-[hsl(0,0%,100%)] to-[hsl(var(--primary-200))];
+  }
+
+  /* Card Styles */
+  .card-border {
+    @apply border-gradient p-[2px] rounded-2xl w-fit;
+  }
+
+  .card-content {
+    @apply dark-gradient rounded-2xl min-h-full;
+  }
+
+  /* Button Styles */
+  .btn-call {
+    @apply inline-flex items-center justify-center px-7 py-3 font-bold text-sm text-white 
+           transition-all duration-200 bg-[hsl(var(--success-100))] border border-transparent 
+           rounded-full shadow-lg hover:bg-[hsl(var(--success-200))] hover:shadow-xl
+           focus:outline-none focus:ring-2 focus:ring-[hsl(var(--success-100))] focus:ring-offset-2 
+           focus:ring-offset-background min-w-28 cursor-pointer;
+  }
+
+  .btn-disconnect {
+    @apply inline-flex items-center justify-center px-7 py-3 text-sm font-bold text-white 
+           transition-all duration-200 bg-[hsl(var(--destructive-100))] border border-transparent 
+           rounded-full shadow-lg hover:bg-[hsl(var(--destructive-200))] hover:shadow-xl
+           focus:outline-none focus:ring-2 focus:ring-[hsl(var(--destructive-100))] focus:ring-offset-2 
+           focus:ring-offset-background min-w-28 cursor-pointer;
+  }
+
+  .btn-primary {
+    @apply bg-[hsl(var(--primary-200))] text-[hsl(var(--dark-100))] hover:bg-[hsl(var(--primary-200))]/80 
+           rounded-full font-bold px-6 py-2.5 cursor-pointer transition-all duration-200 
+           shadow-lg hover:shadow-xl;
+  }
+
+  .btn-secondary {
+    @apply bg-[hsl(var(--dark-200))] text-[hsl(var(--primary-200))] hover:bg-[hsl(var(--dark-200))]/80 
+           rounded-full font-bold px-6 py-2.5 cursor-pointer transition-all duration-200 
+           border border-[hsl(var(--border))];
+  }
+
+  /* Form Styles */
+  .form-input {
+    @apply bg-[hsl(var(--dark-200))] rounded-full min-h-12 px-5 
+           placeholder:text-[hsl(var(--light-400))] border border-[hsl(var(--border))]
+           focus:border-[hsl(var(--primary-200))] focus:ring-2 focus:ring-[hsl(var(--primary-200))]/20
+           transition-all duration-200;
+  }
+
+  /* Interview Card */
+  .card-interview {
+    @apply dark-gradient rounded-2xl min-h-full flex flex-col p-6 relative overflow-hidden gap-6 justify-between
+           border border-[hsl(var(--border))] hover:border-[hsl(var(--primary-200))]/30 transition-all duration-300;
+  }
+
+  /* Call View */
+  .call-view {
+    @apply flex sm:flex-row flex-col gap-10 items-center justify-between w-full;
+  }
+
+  .card-interviewer {
+    @apply flex items-center justify-center flex-col gap-4 p-7 h-[400px] blue-gradient-dark 
+           rounded-2xl border-2 border-[hsl(var(--primary-200))]/30 flex-1 sm:basis-1/2 w-full;
+  }
+
+  /* Transcript */
+  .transcript-border {
+    @apply border-gradient p-[2px] rounded-2xl w-full;
+  }
+
+  .transcript {
+    @apply dark-gradient rounded-2xl min-h-12 px-5 py-3 flex items-center justify-center;
+  }
+
+  /* Layout */
+  .auth-layout {
+    @apply flex items-center justify-center mx-auto max-w-7xl min-h-screen px-4 py-8;
+  }
+
+  .root-layout {
+    @apply flex mx-auto max-w-7xl flex-col gap-12 my-12 px-4 sm:px-8 lg:px-16;
+  }
+
+  /* CTA Card */
+  .card-cta {
+    @apply flex flex-col sm:flex-row blue-gradient-dark rounded-3xl px-8 sm:px-16 py-8 
+           items-center justify-between gap-6 border border-[hsl(var(--primary-200))]/20;
+  }
+
+  /* Interviews Section */
+  .interviews-section {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full;
+  }
+
+  /* Avatar Animation */
+  .animate-speak {
+    @apply absolute inline-flex size-5/6 animate-ping rounded-full bg-[hsl(var(--primary-200))] opacity-75;
+  }
+
+  /* Tech Badge */
+  .tech-tooltip {
+    @apply absolute bottom-full mb-1 hidden group-hover:flex px-2 py-1 text-xs 
+           text-white bg-[hsl(var(--dark-200))] rounded-md shadow-md;
+  }
+
+  /* Feedback Section */
+  .section-feedback {
+    @apply flex flex-col gap-8 max-w-5xl mx-auto px-4 text-lg leading-7;
+  }
+
+  /* Progress Bar */
+  .progress-bar {
+    @apply h-2 bg-[hsl(var(--primary-200))] rounded-full;
+  }
+}
+
+/* Custom Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--primary-200) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(var(--primary-200) / 0.6);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.6s ease-out;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
